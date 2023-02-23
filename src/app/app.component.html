@@ -1,0 +1,17 @@
+<ngx-loading-bar [height]="'6px'" [color]="'#7c0d0d'" [diameter]="'10'"></ngx-loading-bar>
+<body>
+  <div class="header">
+    <div class="logo">
+      <h1>MyShop</h1>
+    </div>
+    <div class="home">
+
+    </div>
+    <div class="login-and-cart">
+      <div class="cart"><mat-icon *ngIf="!(productCount==0)"  [matBadge]="productCount" matBadgeColor="warn" (click)="onCartClick()" > shopping_cart</mat-icon>
+        <mat-icon *ngIf="productCount==0" (click)="onCartClick()" > shopping_cart</mat-icon>
+      </div>
+    </div>
+  </div>
+  <main><router-outlet></router-outlet></main>
+</body>

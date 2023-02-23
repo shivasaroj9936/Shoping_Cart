@@ -1,0 +1,51 @@
+
+<div #addToCartLayer class="add-cart" >
+    <ng-container *ngTemplateOutlet="productTemplate;context:{product:product}"></ng-container>
+</div>
+<div #displayCard     >
+    <ng-container  *ngTemplateOutlet="productTemplate;context:{product:product}"></ng-container>
+</div>
+
+
+
+
+<ng-template  #productTemplate let-item="product">
+  <div class="product-card" >
+  <mat-card class="example-card"   appBackgroundColor >
+    <mat-card-header>
+      <mat-card-title>{{ item?.title | titlecase }}</mat-card-title>
+      <mat-card-subtitle>{{ item.category | titlecase }}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="product-image"  >
+      <img mat-card-image [src]="item.images[0]" alt="Photo of product" />
+    </div>
+    <mat-card-content>
+      <p>Price {{ item.price|currency:'CAD':'symbol-narrow' }}</p>
+      <p>
+        {{ item?.description }}
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions class="buy-button" >
+      <ng-container *ngIf="!item?.addToCart">
+        <button mat-button (click)="addToCart()">Add to cart</button>
+      </ng-container>
+      <ng-container *ngIf="item?.addToCart">
+        <div class="added">
+          <button mat-button (click)="onIncreaseDecrease(-1)">
+            -
+          </button>
+          <span>{{ item?.numberOfItemInCart }}</span>
+
+          <button mat-button (click)="onIncreaseDecrease(1)">
+            +
+          </button>
+        </div>
+        <div class="total-price" *ngIf="totalPrice">
+          <h2>Total Price :</h2> <h2>{{item?.totalPrice|currency:'CAD':'symbol-narrow'}}</h2>
+        </div>
+      </ng-container>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</ng-template>

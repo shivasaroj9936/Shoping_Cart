@@ -1,0 +1,42 @@
+
+<section>
+
+  <div class="cart"  @scaleFadeStagger>
+    <div class="headings" *ngIf="totalPrice">
+      <h1>Product Image</h1>
+      <h1>Product Name</h1>
+      <h1>Product Price</h1>
+      <h1>Product Quantity</h1>
+    </div>
+    <ng-container *ngFor="let item of productDetails; let itemIndex = index" >
+      <div class="list" *ngIf="item.addToCart">
+          <span class="product-image">
+            <img mat-card-image [src]="item.images[0]" alt="Photo of product" />
+          </span>
+          <p><span>{{ item?.title }}</span></p>
+          <span class="price">
+            <p>Price :  <span> {{ item?.totalPrice |currency:'CAD':'symbol-narrow'}} </span></p>
+          </span>
+          <span class="increase-decrease">
+              <span class="dataCount">{{ item?.numberOfItemInCart }}</span>
+          </span>
+
+      </div>
+    </ng-container>
+    <div class="total-price" *ngIf="totalPrice" @scaleFadeStagger>
+      <h2>Total Payable Amount :</h2> <h2>{{totalPrice|currency:'CAD':'symbol-narrow'}}</h2>
+    </div>
+    <div class="checkout" *ngIf="totalPrice" >
+      <button mat-button matStepperNext >Add Delivery Address</button>
+    </div>
+    <div class="empty-contaner" *ngIf="totalPrice==0" >
+      <div class="empty-class">
+          <img class="cart-image" src="assets/potted-plant.svg"/>
+          <h3 class="text">Your cart is Empty</h3>
+          <p class="text">Looks like you haven't added anything to your cart yet</p>
+      </div>
+    </div>
+  </div>
+
+
+</section>

@@ -1,0 +1,49 @@
+section {
+  background-color: white;
+  padding: 3%;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+        0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  div {
+    padding-left: 50px;
+  }
+
+  button {
+    background-color: #28a745;
+    border: none;
+    color: #ffff;
+  }
+  .state,
+  .district,
+  .city {
+    display: grid;
+    grid-template-columns: 20% auto 70%;
+
+    .remove_button {
+      button {
+        background-color: #dc3545;
+        border: none;
+        color: white;
+      }
+    }
+    // background-color: #ffff;
+    // border-bottom: 1px solid red;
+  }
+  // .state{
+  // background-color: #c3ddf3;
+  // }
+
+  // .district{
+  //   background-color: #ccfad7;
+  // }
+
+  ::ng-deep {
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: black;
+      box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+        0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    }
+  }
+}
+.address {
+  margin-top: 10%;
+}

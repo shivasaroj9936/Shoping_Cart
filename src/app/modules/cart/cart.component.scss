@@ -1,0 +1,141 @@
+section {
+  position: relative;
+
+  .example-card {
+    display: grid;
+    grid-template-rows: auto;
+  }
+
+  .items {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1rem;
+  }
+
+  .cart {
+    position: absolute;
+    top: -32px;
+    right: -30px;
+    height: 600px;
+    width: 530px;
+
+    .title {
+      background-color: #6d79fb8c;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+
+      h1 {
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      border-bottom: 3px solid rgb(227, 135, 135);
+
+      span {
+        color: red;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+    }
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+    height: min-content;
+    background-color: #d3e4fa;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%),
+    0px 1px 3px 0px rgb(0 0 0 / 12%);
+    border-radius: 4px;
+
+    .list {
+      display: flex;
+      padding-top: 10px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+
+      .increase-decrease {
+        .dataCount {
+          vertical-align: super;
+          margin: 0px 10px;
+        }
+
+        .mat-18 {
+          color: #186ff2;
+          cursor: pointer;
+
+        }
+      }
+
+      .delete {
+        .delete-icon {
+          color: red;
+          cursor: pointer;
+        }
+
+      }
+
+      .product-image {
+        img {
+          margin: 0 auto;
+          height: 100px;
+          width: 100px;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .checkout {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+
+      button {
+        background-color: #BB9981;
+        border: none;
+        padding: 7px 26px;
+        font-size: 16px;
+        width: -webkit-fill-available;
+      }
+    }
+  }
+
+  .total-price {
+    border-top: 1px solid gray;
+
+    margin: 10px 28px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .empty-contaner {
+    background-color: #f7f9f1;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+      0px 1px 1px 0px rgb(0 0 0 / 14%),
+      0px 1px 3px 0px rgb(0 0 0 / 12%);
+    border-radius: 4px;
+    text-align: center;
+
+    img {
+      height: 200px;
+      width: 200px;
+    }
+
+    .empty-class {
+
+      .shop-now {
+
+        button {
+          background-color: #BB9981;
+          border: none;
+          padding: 5px 10px;
+          font-size: 16px;
+          width: 40%;
+        }
+      }
+    }
+  }
+}

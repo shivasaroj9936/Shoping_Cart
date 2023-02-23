@@ -1,0 +1,118 @@
+
+<body>
+  <section>
+    <div class="categories">
+      <div class="category">
+        <h2>Category</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Select Category</mat-label>
+          <mat-select [formControl]="categorySelection">
+            <mat-option *ngFor="let categorie of data.data" [value]="categorie">{{
+              categorie.catName  }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="sub-category">
+        <h2>Sub-Category</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Select Sub-Category</mat-label>
+          <mat-select [formControl]="subCategorySelection">
+            <mat-option *ngFor="let subCategorie of categorySelection?.value?.subCat" [value]="subCategorie">{{subCategorie?.subCatName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="action">
+        <h2>Action Related to data</h2>
+        <div class="add">
+          <button mat-raised-button (click)="onAdd()">Add</button>
+        </div>
+      </div>
+      <div class="home">
+        <h1>Home</h1>
+        <mat-icon (click)="toCart()">home </mat-icon>
+
+      </div>
+      <div class="home">
+        <h1>Add Address</h1>
+        <mat-icon (click)="toSelectLocation()">location_on </mat-icon>
+
+      </div>
+      <div class="home">
+        <h1>High Chart</h1>
+        <mat-icon (click)="toHighChart()">bar_chart </mat-icon>
+      </div>
+
+    </div>
+
+    <div class="final-submit">
+      <button mat-raised-button (click)="finalSubmit()">Final Submit</button>
+    </div>
+  </section>
+
+  <form [formGroup]="dataFinal">
+    <table>
+      <thead>
+        <th>Category ID</th>
+        <th>Category Name</th>
+        <th>Sub-Category ID</th>
+        <th>Sub-Category Name</th>
+        <th>Class A</th>
+        <th>Class B</th>
+        <th>Class C</th>
+        <th>Class Total</th>
+        <th>Action</th>
+      </thead>
+      <ng-container formArrayName="categories" *ngFor="let cat of categories.controls; let catIndex = index">
+        <ng-container [formGroupName]="catIndex">
+          <ng-container formArrayName="subCatData"
+            *ngFor="let subCat of subCategoryArrayAtIndex(catIndex).controls;let subCatIndex=index;">
+            <tr>
+              <ng-container [formGroupName]="subCatIndex">
+                <td>
+                  <ng-container *ngIf="!(subCatIndex>=1)"> {{cat|formPipe:'catId'}}</ng-container>
+                </td>
+                <td>
+                  <ng-container *ngIf="!(subCatIndex>=1)"> {{cat|formPipe:'catName'}}</ng-container>
+                </td>
+                <td>{{subCat|formPipe:'subCatId'}}</td>
+                <td>{{subCat|formPipe:'subCatName'}}</td>
+
+                <ng-container formArrayName="classes"
+                  *ngFor="let classData of subCat.get('classes')?.value;let classIndex=index">
+                  <td>
+                    <mat-icon class="mat-18" (click)="onIncreaseDecrease(classData,catIndex,subCatIndex,-1)">
+                      remove_circle_outline</mat-icon>
+                    <!-- {{classData.classCount}} -->
+                    {{classData|formPipe:'classCount'}}
+
+                    <mat-icon class="mat-18" (click)="onIncreaseDecrease(classData,catIndex,subCatIndex,1)">
+                      add_circle_outline</mat-icon>
+
+                  </td>
+                </ng-container>
+                <td>{{subCat.get('classTotal')?.value}}</td>
+                <!-- <td>{{subCat|formPipe:'classTotal'}}</td> -->
+
+                <td>
+                  <mat-icon  class="delete" (click)="onDelete(catIndex,subCatIndex)">delete</mat-icon>
+                </td>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </table>
+  </form>
+  <div class="data-final">
+    <h3 style="margin-top: 50px;">Final Data :-</h3>
+    {{ dataFinal.value | json }}
+    </div>
+    <div class="form-with-api">
+      <section>
+        <!-- <form [formGroup]="myFormGroup"> -->
+          {{categories|formPipe:'catId' }}
+        <!-- </form> -->
+      </section>
+    </div>
+</body>

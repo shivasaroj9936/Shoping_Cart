@@ -1,0 +1,44 @@
+<!-- <section>
+  <table mat-table *ngIf="dataSource" matSortDirection="asc" [dataSource]="dataSource" matSort>
+    <ng-container class="data" *ngFor="let row of columns" [matColumnDef]="row.heading">
+      <ng-container>
+        <th mat-header-cell *matHeaderCellDef [attr.rowspan]="5">{{row.heading}}</th>
+      </ng-container>
+      <td mat-cell *matCellDef="let element; let i=index">
+        <ng-container class="value" [ngSwitch]="row.type">
+          <ng-container *ngSwitchCase="'text'">
+             <span class="catName">  {{element[row.key]}}</span>
+          </ng-container>
+          <ng-container *ngSwitchCase="'custom'">
+            <ng-container *ngFor="let item of element[row.key]">
+              <span class="data"> {{item|customPipe:row.heading}}</span>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'classButton'">
+            <ng-container *ngFor="let item of element[row.key]">
+              <p class="item">
+                  <mat-icon (click)="onIncreaseDecrease(item,row.heading,-1)" >remove_circle_outline</mat-icon>
+              <span class="itemData"> {{item|customPipe:row.heading}}</span>
+                  <mat-icon (click)="onIncreaseDecrease(item,row.heading,1)" >add_circle_outline</mat-icon>
+            </p>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="'action'">
+            <div class="actionIcon">
+              <ng-container *ngFor="let data of element.subCatData; let i=index;">
+                <p class="item">
+                  <mat-icon class="delete-icon" (click)="handleClick(data)">delete</mat-icon>
+                </p>
+              </ng-container>
+            </div>
+          </ng-container>
+        </ng-container>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="headerRow"></tr>
+    <tr mat-row *matRowDef="let row; columns: headerRow;"></tr>
+    <tr class="noData" class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="9">No data found</td>
+    </tr>
+  </table>
+</section> -->

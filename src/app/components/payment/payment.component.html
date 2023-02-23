@@ -1,0 +1,72 @@
+<section>
+  <h1>Payment</h1>
+  <div class="option">
+    <h3>Payment Methods:</h3>
+    <mat-radio-group aria-label="Select an option" [formControl]="paymentOption">
+      <mat-radio-button value="1">Credit/Debit Card</mat-radio-button>
+      <mat-radio-button value="2">UPI Payment</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <form [formGroup]="paymentForm">
+    <div class="card" *ngIf="paymentOption.value==1">
+      <div class="field">
+        <mat-label>Enter your Card Number.</mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="xxxx-xxxx-xxxx-xxxx-xxxx" formControlName="cardNumber" required appNumberOnly maxlength="16" minlength="16">
+          <mat-error *ngIf="paymentForm.controls.cardNumber.invalid">Please enter the 16 digit card number.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="field">
+          <mat-label>Enter your Card Expiry Date.</mat-label>
+          <div class="inputData">
+            <mat-form-field appearance="outline">
+              <mat-label>Month</mat-label>
+              <mat-select formControlName="month">
+                <mat-option *ngFor="let month of months" value="month">{{month}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Year</mat-label>
+              <mat-select formControlName="year">
+                <mat-option *ngFor="let year of years" value="year">{{year}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="field">
+          <mat-label>Enter CVV Number.</mat-label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="xxxx" formControlName="cvv" required appNumberOnly maxlength="3" minlength="3">
+          <mat-error *ngIf="paymentForm.controls.cvv.invalid">Please enter the 3 digit CVV number.</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="field">
+        <mat-label>Enter Card Holder Name.</mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="xyz" formControlName="cardHolderName" required appInputRestriction="noSpecialChars"  appNameValidation appPreventStartingSpace >
+          <mat-error *ngIf="paymentForm.controls.cardHolderName.invalid">Please enter card holder name.</mat-error>
+
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <form [formGroup]="upiForm">
+
+    <div class="upi" *ngIf="paymentOption.value==2">
+      <div class="field">
+        <mat-label>Enter Your UPI ID.</mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="*************" formControlName="upiId" required appPreventStartingSpace minlength="6" >
+          <mat-error *ngIf="upiForm.controls.upiId.invalid">Please enter upiID.</mat-error>
+
+        </mat-form-field>
+      </div>
+    </div>
+    </form>
+  <div class="btn">
+    <button mat-raised-button type="button" matStepperPrevious>Back</button>
+    <button mat-raised-button type="submit" matStepperNext [disabled]="((paymentForm.invalid)&&(upiForm.invalid))" (click)="placeOrder()" >Place Order</button>
+  </div>
+</section>

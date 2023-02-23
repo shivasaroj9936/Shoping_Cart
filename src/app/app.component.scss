@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F4FCD9;
+  mat-icon{
+    cursor: pointer;
+  }
+  .header {
+    padding: 0 15%;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color:#C5D8A4;
+    color: #534340;
+    .logo{
+      h1{
+        font-size: 40px;
+        color: #7c0d0d;
+      }
+    }
+    .login-and-cart {
+      display: flex;
+      .cart{
+        mat-icon{
+          font-size: 30px;
+        }
+        position: relative;
+      }
+    .mat-badge-content {
+        background: red;
+        color: blue;
+    }
+    }
+  }
+  main{
+    padding: 1% 2%;
+    background-color: #F4FCD9;
+
+  }
+}

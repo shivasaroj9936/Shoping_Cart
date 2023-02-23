@@ -1,0 +1,61 @@
+<section>
+  <div class="title">
+    <h1>Shipping Address</h1>
+  </div>
+  <form [formGroup]="addressForm">
+    <div class="name">
+      <mat-form-field appearance="outline" >
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" formControlName="firstName" appInputRestriction="noSpecialChars"  appNameValidation minlength="3" appPreventStartingSpace appTrim />
+        <mat-error *ngIf="addressForm.controls.firstName.invalid">Please enter First Name.</mat-error>
+
+      </mat-form-field>
+      <mat-form-field appearance="outline" >
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" formControlName="lastName" appInputRestriction="noSpecialChars"  appNameValidation minlength="3" appPreventStartingSpace appTrim />
+        <mat-error *ngIf="addressForm.controls.lastName.invalid">Please enter Last Name.</mat-error>
+
+      </mat-form-field>
+    </div>
+    <div class="phone">
+      <mat-form-field appearance="outline" >
+        <mat-label>Phone Number</mat-label>
+        <input matInput placeholder="Phone Number" formControlName="phone" appNumberOnly maxlength="10" minlength="10" />
+        <mat-error *ngIf="addressForm.controls.phone.invalid">Please enter Phone Number.</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="address">
+      <mat-form-field appearance="outline" >
+        <mat-label>Address</mat-label>
+        <textarea matInput placeholder="Address..." formControlName="address" appTrim></textarea>
+        <mat-error *ngIf="addressForm.controls.address.invalid">Please enter Address.</mat-error>
+
+      </mat-form-field>
+    </div>
+    <div class="city">
+      <mat-form-field appearance="outline" >
+        <mat-label>Postal Code</mat-label>
+        <input matInput placeholder="Postal Code" formControlName="postalCode" appNumberOnly/>
+        <mat-error *ngIf="addressForm.controls.postalCode.invalid">Please enter Postal Code.</mat-error>
+
+      </mat-form-field>
+      <mat-form-field appearance="outline" >
+        <mat-label>City</mat-label>
+        <input matInput placeholder="City" formControlName="city" appInputRestriction="noSpecialChars"  appNameValidation appPreventStartingSpace appTrim/>
+        <mat-error *ngIf="addressForm.controls.city.invalid">Please enter City.</mat-error>
+
+      </mat-form-field>
+      <mat-form-field appearance="outline" >
+        <mat-label>State</mat-label>
+        <input matInput placeholder="State" formControlName="state" appInputRestriction="noSpecialChars"  appNameValidation appPreventStartingSpace  appTrim/>
+        <mat-error *ngIf="addressForm.controls.state.invalid">Please enter State.</mat-error>
+
+      </mat-form-field>
+    </div>
+    <div class="btn">
+      <button mat-raised-button type="button" matStepperPrevious>Back</button>
+      <button mat-raised-button type="submit" matStepperNext [disabled]="addressForm.invalid" (click)="addressSubmit()"  >Proceed For Payment</button>
+    </div>
+  </form>
+
+</section>

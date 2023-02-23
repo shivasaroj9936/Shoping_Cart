@@ -1,0 +1,66 @@
+$primary: #BB9981;
+$backGroundColor: #c0d2fa;
+
+section {
+  ::ng-deep .mat-typography p {
+    margin: 0;
+  }
+
+  ::ng-deep {
+    .mat-typography p {
+      margin: 0;
+    }
+  }
+
+  table {
+    width: 100%;
+    border: 2px solid $primary;
+
+    th {
+      color: #534340;
+      background-color: #C5D8A4;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    tr {
+      text-align: center;
+    }
+
+    td {
+      color: #534340;
+      .catName{
+        font-size: 22px;
+      }
+      .item {
+        margin-top: 10px;
+        .itemData{
+          vertical-align: super;
+          margin: 0 13px;
+        }
+      }
+
+      .delete-icon {
+        color: red;
+      }
+
+      .data {
+        color: #e76108;
+        font-size: 18px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content:center;
+        margin: 25px;
+      }
+    }
+
+    mat-icon {
+      color: $primary;
+      margin-right: 4px;
+      cursor: pointer;
+      color: #7f817d;
+    }
+  }
+}

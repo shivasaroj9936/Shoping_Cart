@@ -1,0 +1,58 @@
+<section >
+  <div class="items" @scaleFade  >
+    <ng-container *ngFor="let item of productDetails; let itemIndex = index">
+     <div class="product">
+       <app-product-card  @scaleFadeStagger [product]="item" [itemIndex]="itemIndex" (addInCart)="onBuyButton($event)" (increseDecrease)="onIncreaseDecreaseFromChield($event)" [totalPrice]="totalPrice"  > </app-product-card>
+
+     </div>
+
+    </ng-container>
+  </div>
+  <div class="cart" *ngIf="showdiv" @scaleFadeStagger>
+    <div class="title">
+      <h1>Your Cart</h1>
+      <span (click)=" clearCart()">Remove All</span>
+      </div>
+
+    <ng-container *ngFor="let item of productDetails; let itemIndex = index" >
+      <div  appBackgroundColor class="list" *ngIf="item.addToCart" @scaleFadeStagger >
+          <span class="product-image" @scaleFadeStagger>
+            <img mat-card-image [src]="item.images[0]" alt="Photo of product" />
+          </span>
+          <p><span>{{ item?.title }}</span></p>
+
+          <span class="price" @scaleFadeStagger>
+            <p>Price :  <span> {{ item?.totalPrice |currency:'CAD':'symbol-narrow'}} </span></p>
+          </span>
+          <span class="increase-decrease" @scaleFadeStagger>
+
+            <mat-icon class="mat-18" (click)="onIncreaseDecrease(itemIndex, -1)">
+              remove_circle_outline</mat-icon>
+              <span class="dataCount">{{ item?.numberOfItemInCart }}</span>
+
+            <mat-icon class="mat-18" (click)="onIncreaseDecrease(itemIndex, +1)">
+              add_circle_outline</mat-icon>
+          </span>
+          <span class="delete">
+            <mat-icon class="delete-icon" (click)="deleteItem(itemIndex)">delete</mat-icon>
+          </span>
+      </div>
+    </ng-container>
+    <div class="total-price" *ngIf="totalPrice">
+      <h2>Total Price :</h2> <h2>{{totalPrice|currency:'CAD':'symbol-narrow'}}</h2>
+    </div>
+    <div class="checkout" *ngIf="totalPrice" >
+      <button mat-button (click)="toCheckOut()" >Checkout</button>
+    </div>
+    <div class="empty-contaner" *ngIf="totalPrice==0" >
+      <div class="empty-class">
+          <!-- empty cart is sad, lets add some plants to brighten up the mood -->
+          <img class="cart-image" src="assets/potted-plant.svg"/>
+          <h3 class="text">Your cart is Empty</h3>
+          <p class="text">Looks like you haven't added anything to your cart yet</p>
+          <!-- <p class="shop-now"><button mat-button (click)="shopNow()"><span>Shop now</span></button></p> -->
+      </div>
+    </div>
+  </div>
+
+</section>

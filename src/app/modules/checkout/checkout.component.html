@@ -1,0 +1,51 @@
+<section>
+  <mat-stepper class="stepper">
+    <ng-template matStepperIcon="edit">
+        <mat-icon>check</mat-icon>
+      </ng-template>
+    <mat-step label="Cart Details" state="edit">
+      <app-cart-details ></app-cart-details>
+    </mat-step>
+    <mat-step label="Address" state="address">
+      <app-address> </app-address>
+    </mat-step>
+    <mat-step label="Payment" state="payment">
+      <app-payment></app-payment>
+    </mat-step>
+
+    <ng-template matStepperIcon="product" >
+      <mat-icon >shopping_cart</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="address">
+      <mat-icon>home</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="payment">
+      <mat-icon>attach_money </mat-icon>
+    </ng-template>
+  </mat-stepper>
+</section>
+
+<!-- <body>
+  <mat-stepper>
+    <mat-step label="Cart Details" state="product">
+      <app-cart-details [productDetails]="productDetails" [totalPrice]="totalPrice"></app-cart-details>
+
+    </mat-step>
+    <mat-step label="Delivery Address" state="address">
+      <app-address></app-address>
+    </mat-step>
+    <mat-step label="Make Payment" state="payment">
+      <app-payment></app-payment>
+    </mat-step>
+
+    <ng-template matStepperIcon="product">
+      <mat-icon>shopping_cart</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="address">
+      <mat-icon>home</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="payment">
+      <mat-icon>attach_money</mat-icon>
+    </ng-template>
+  </mat-stepper>
+</body> -->

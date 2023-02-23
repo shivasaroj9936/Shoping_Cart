@@ -1,0 +1,113 @@
+body {
+  margin: auto 14%;
+
+  section {
+    margin-top: 2%;
+    color: #534340;
+
+    ::ng-deep {
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: #534340;
+      }
+
+      mat-form-field {
+        margin-bottom: 15px;
+
+        .mat-hint,
+        input,
+        ::placeholder,
+        .mat-form-field-label {
+          color: #534340;
+          font-weight: 550;
+        }
+      }
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: 20% 20% 20% auto auto auto;
+
+      .action {
+
+        button {
+          background-color: #BB9981;
+          border: none;
+          padding: 7px 26px;
+          font-size: 16px;
+          margin-right: 50px;
+
+          &:disabled {
+            background-color: #9a9c9f;
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      .home {
+        h1 {
+          font: 500 20px / 32px Roboto, "Helvetica Neue", sans-serif;
+
+        }
+
+        mat-icon {
+          font-size: 40px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .final-submit {
+      margin-top: 40px;
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        background-color: #BB9981;
+        border: none;
+        padding: 7px 26px;
+        font-size: 16px;
+
+        &:disabled {
+          background-color: #9a9c9f;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+  }
+
+  table {
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+
+    mat-icon {
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .delete {
+      color: red;
+    }
+
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      color: #534340;
+      background-color: #C5D8A4;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+  }
+}
